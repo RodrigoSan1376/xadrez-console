@@ -39,7 +39,7 @@ namespace xadrez
             }
 
             // #jogadaespecial roque pequeno
-            if(p is Rei && destino.Coluna == origem.Coluna + 2)
+            if (p is Rei && destino.Coluna == origem.Coluna + 2)
             {
                 Posicao origemTorre = new Posicao(origem.Linha, origem.Coluna + 3);
                 Posicao destinoTorre = new Posicao(origem.Linha, origem.Coluna + 1);
@@ -59,12 +59,12 @@ namespace xadrez
             }
 
             // #jogadaespecial en passant
-            if(p is Peao)
+            if (p is Peao)
             {
-                if(origem.Coluna != destino.Coluna && pecaCapturada == null)
+                if (origem.Coluna != destino.Coluna && pecaCapturada == null)
                 {
                     Posicao posPeao;
-                    if(p.Cor == Cor.Branca)
+                    if (p.Cor == Cor.Branca)
                     {
                         posPeao = new Posicao(destino.Linha + 1, destino.Coluna);
                     }
@@ -84,7 +84,7 @@ namespace xadrez
         {
             Peca p = Tab.RetirarPeca(destino);
             p.DecrementarQteMovimentos();
-            if(pecaCapturada != null)
+            if (pecaCapturada != null)
             {
                 Tab.ColocarPeca(pecaCapturada, destino);
                 capturadas.Remove(pecaCapturada);
@@ -112,13 +112,13 @@ namespace xadrez
             }
 
             // #jogadaespecial en passant
-            if(p is Peao)
+            if (p is Peao)
             {
-                if(origem.Coluna != destino.Coluna && pecaCapturada == VulneravelEnPassant)
+                if (origem.Coluna != destino.Coluna && pecaCapturada == VulneravelEnPassant)
                 {
                     Peca peao = Tab.RetirarPeca(destino);
                     Posicao posPeao;
-                    if(p.Cor == Cor.Branca)
+                    if (p.Cor == Cor.Branca)
                     {
                         posPeao = new Posicao(3, destino.Coluna);
                     }
@@ -144,9 +144,9 @@ namespace xadrez
             Peca p = Tab.Peca(destino);
 
             // #jogadaespecial promocao
-            if(p is Peao)
+            if (p is Peao)
             {
-                if((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
+                if ((p.Cor == Cor.Branca && destino.Linha == 0) || (p.Cor == Cor.Preta && destino.Linha == 7))
                 {
                     p = Tab.RetirarPeca(destino);
                     pecas.Remove(p);
@@ -175,9 +175,9 @@ namespace xadrez
                 MudaJogador();
             }
 
-            
+
             // #jogadaespecial en passant
-            if(p is Peao && (destino.Linha == origem.Linha -2 || destino.Linha == origem.Linha + 2))
+            if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
             {
                 VulneravelEnPassant = p;
             }
@@ -275,19 +275,19 @@ namespace xadrez
             return null;
         }
 
-        
+
         public bool EstaEmXeque(Cor cor)
         {
             Peca r = Rei(cor);
-            if(r == null)
+            if (r == null)
             {
                 throw new TabuleiroException("Não tem rei da cor " + cor + " no tabuleiro!");
             }
 
-            foreach(Peca x in PecasEmJogo(Adversaria(cor)))
+            foreach (Peca x in PecasEmJogo(Adversaria(cor)))
             {
                 bool[,] mat = x.MovimentosPossiveis();
-                if(mat[r.Posicao.Linha, r.Posicao.Coluna])
+                if (mat[r.Posicao.Linha, r.Posicao.Coluna])
                 {
                     return true;
                 }
@@ -301,14 +301,14 @@ namespace xadrez
             {
                 return false;
             }
-            foreach(Peca x in PecasEmJogo(cor))
+            foreach (Peca x in PecasEmJogo(cor))
             {
                 bool[,] mat = x.MovimentosPossiveis();
-                for(int i =  0; i < Tab.Linhas; i++)
+                for (int i = 0; i < Tab.Linhas; i++)
                 {
-                    for(int j = 0; j < Tab.Colunas; j++)
+                    for (int j = 0; j < Tab.Colunas; j++)
                     {
-                        if(mat[i, j])
+                        if (mat[i, j])
                         {
                             Posicao origem = x.Posicao;
                             Posicao destino = new Posicao(i, j);

@@ -7,7 +7,7 @@ namespace xadrez_console
     class Program
     {
         static void Main(string[] args)
-        {            
+        {
             try
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
@@ -49,7 +49,7 @@ namespace xadrez_console
             }
             catch (TabuleiroException e)
             {
-                Console.WriteLine(e.Message);                
+                Console.WriteLine(e.Message);
             }
             Console.ReadLine();
         }

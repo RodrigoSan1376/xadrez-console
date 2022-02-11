@@ -122,6 +122,6 @@ namespace xadrez
                 pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             }
             return mat;
-        }        
+        }
     }
 }
