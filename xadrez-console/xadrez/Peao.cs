@@ -10,6 +10,11 @@ namespace xadrez
             Partida = partida;
         }
 
+        public override string ToString()
+        {
+            return "P";
+        }
+
         private bool ExisteInimigo(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
@@ -113,11 +118,6 @@ namespace xadrez
                 }
             }
             return mat;
-        }
-
-        public override string ToString()
-        {
-            return "P";
-        }
+        }       
     }
 }

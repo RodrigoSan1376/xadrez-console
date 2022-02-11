@@ -11,6 +11,11 @@ namespace xadrez
             Partida = partida;
         }
 
+        public override string ToString()
+        {
+            return "R";
+        }
+
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
@@ -35,42 +40,49 @@ namespace xadrez
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //nordeste
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //direita
             pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //sudeste
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //abaixo
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //sudoeste
             pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //esquerda
             pos.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
             {
                 mat[pos.Linha, pos.Coluna] = true;
             }
+
             //noroeste
             pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
             if (Tab.PosicaoValida(pos) && PodeMover(pos))
@@ -106,14 +118,7 @@ namespace xadrez
                     }
                 }
             }
-
-
             return mat;
-        }
-
-        public override string ToString()
-        {
-            return "R";
-        }
+        }        
     }
 }

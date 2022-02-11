@@ -8,6 +8,11 @@ namespace xadrez
         {
         }
 
+        public override string ToString()
+        {
+            return "D";
+        }
+
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
@@ -30,7 +35,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha -= 1;
+                pos.DefinirValores(pos.Linha - 1, pos.Coluna);
             }
 
             //abaixo
@@ -42,7 +47,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Linha += 1;
+                pos.DefinirValores(pos.Linha + 1, pos.Coluna);
             }
 
             //direita
@@ -54,7 +59,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna += 1;
+                pos.DefinirValores(pos.Linha, pos.Coluna + 1);
             }
 
             //esquerda
@@ -66,7 +71,7 @@ namespace xadrez
                 {
                     break;
                 }
-                pos.Coluna -= 1;
+                pos.DefinirValores(pos.Linha, pos.Coluna - 1);
             }
 
             //noroeste
@@ -117,11 +122,6 @@ namespace xadrez
                 pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             }
             return mat;
-        }
-
-        public override string ToString()
-        {
-            return "D";
-        }
+        }        
     }
 }

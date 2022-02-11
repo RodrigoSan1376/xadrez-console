@@ -8,6 +8,11 @@ namespace xadrez
         {
         }
 
+        public override string ToString()
+        {
+            return "B";
+        }
+
         private bool PodeMover(Posicao pos)
         {
             Peca p = Tab.Peca(pos);
@@ -68,11 +73,6 @@ namespace xadrez
                 pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
             }            
             return mat;
-        }
-
-        public override string ToString()
-        {
-            return "B";
-        }
+        }        
     }
 }
